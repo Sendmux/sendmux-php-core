@@ -16,8 +16,10 @@ Read the PHP SDK guide at [sendmux.ai/docs/sdks/php](https://sendmux.ai/docs/sdk
 ## Installation
 
 ```bash
-composer require sendmux/core:^1.0
+composer require sendmux/core:^2.0
 ```
+
+Upgrading from 1.x? Read the [PHP 2.0 migration guide](https://github.com/Sendmux/sendmux-sdk/blob/main/packages/php/UPGRADING.md) before changing your Composer constraint.
 
 ## Usage
 
@@ -47,7 +49,7 @@ $retryOptions = new RetryOptions(maxAttempts: 3);
 
 ## Features
 
-- `Auth` validates `smx_root_` and `smx_mbx_` API key prefixes and configures bearer auth on generated clients.
+- `Auth` validates `smx_root_` prefixes for root clients, send-capable `smx_mbx_` prefixes or owner-approved Sending-resource `smx_agent_` tokens for Sending clients, and mailbox-compatible `smx_mbx_` or `smx_agent_` prefixes for Mailbox clients.
 - `Headers` builds `Idempotency-Key`, `If-Match`, and `If-None-Match` header arrays.
 - `Pagination::iterate()` streams cursor-paginated responses.
 - `RetryMiddleware` and `RetryOptions` add retry and rate-limit backoff behaviour.
